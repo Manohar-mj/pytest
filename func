@@ -1,0 +1,27 @@
+#my_func.py
+def add(num_one,num_two):
+    return num_one+ num_two
+
+def divide(num_one,num_two):
+    if num_two == 0: raise ValueError
+    return num_one / num_two
+
+
+#test_my_func.py
+import pytest
+import  source.my_func as my_fun
+
+def test_add():
+    res=my_fun.add(num_one=5,num_two=5)
+    assert res==10
+
+def test_div():
+    res=my_fun.divide(num_one=10,num_two=5)
+    assert  res==2
+def test_add_string():
+    res=my_fun.add(num_one="i like ",num_two="Chicken")
+    assert res == "i like Chicken"
+def test_div_by_zero():
+    with pytest.raises(ValueError):
+        # with pytest.raises(ZeroDivisionError):
+        my_fun.divide(num_one=10,num_two=0)
